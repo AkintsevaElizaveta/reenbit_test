@@ -1,11 +1,11 @@
 import ContactItem from "./ContactItem";
 
-function ContactList({contacts}){
+function ContactList({contacts, onSelect}){
     return (
         <ul className="contacts__list">
             {
                 contacts.map((contact, index) => {
-                    return <ContactItem index={index} contact={contact}></ContactItem>
+                    return <ContactItem contact={contact} onSelect={onSelect}></ContactItem>
                 })
             }
         </ul>
