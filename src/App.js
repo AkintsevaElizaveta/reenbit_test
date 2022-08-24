@@ -15,9 +15,17 @@ function App() {
 
     return (
         <Context.Provider>
-            <div className="">
-                <ContactList contacts={contacts}></ContactList>
+            <div className="wrapper">
+                <div className="contacts">
+                    <div className="contacts__search_bar">
+                        <input className="contacts__search_field"/>
+                    </div>
+                    <h3 className="contacts__title">Chats</h3>
+                    <ContactList contacts={contacts}></ContactList>
+                </div>
+                <div>Chat</div>
             </div>
+
         </Context.Provider>
     );
 }
