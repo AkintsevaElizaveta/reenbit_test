@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font: 20px/24px 'Open Sans', sans-serif;;
@@ -5,11 +8,12 @@ body {
 .wrapper{
   width: 100%;
   display: flex;
+  justify-content: center;
   background: rgb(245, 245, 245);
 }
 .contacts{
   width: 40%;
-  border-right: 1px solid rgb(231, 231, 231);
+  border-right: 2px solid rgb(231, 231, 231);
   background: white;
   &__title{
     color: rgb(113, 137, 208);
@@ -23,7 +27,7 @@ body {
   }
   &__list{
     background: white;
-    padding: 10px;
+    padding: 0;
     margin: 0;
     list-style: none;
   }
@@ -39,7 +43,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin: 0 10px 0 20px;
   }
   &__text_area{
     display: flex;
@@ -52,7 +56,7 @@ body {
       width: 8px;
       height: 8px;
       bottom: 6px;
-      left: -25px;
+      left: -80px;
     }
   }
   &__message{
@@ -60,5 +64,72 @@ body {
   }
   &__date{
     font-size: 16px;
+  }
+}
+.chats{
+  background: rgb(245, 245, 245);
+  &__messages_area{
+    background: rgb(255, 255, 255);
+  }
+  &__user_logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 10px 0 20px;
+  }
+  &__header{
+    height: 50px;
+    background: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(231, 231, 231);
+  }
+  &__messages_list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  &__message{
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 20px;
+    padding: 20px 20px;
+    margin-bottom: 5px;
+    display: flex;
+    &_sent{
+      background: lightgray;
+      align-self: flex-end;
+    }
+    &_received{
+      background: rgb(46, 50, 65);
+      color: white;
+      align-self: flex-start;
+    }
+  }
+  &__message_item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    &_received{
+      align-self: flex-start;
+    }
+    &_sent{
+      align-self: flex-end;
+    }
+    &_text_box{
+      display: flex;
+    }
+    &_received_date{
+      font-size: 12px;
+      color: gray;
+      font-style: italic;
+      margin: 0 10px;
+    }
+    &_sent_date{
+      font-size: 12px;
+      color: gray;
+      font-style: italic;
+      align-self: flex-end;
+      margin: 0 10px;
+    }
   }
 }
