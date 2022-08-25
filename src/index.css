@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font: 20px/24px "Open Sans", sans-serif;
@@ -6,12 +10,13 @@ body {
 .wrapper {
   width: 100%;
   display: flex;
+  justify-content: center;
   background: rgb(245, 245, 245);
 }
 
 .contacts {
   width: 40%;
-  border-right: 1px solid rgb(231, 231, 231);
+  border-right: 2px solid rgb(231, 231, 231);
   background: white;
 }
 .contacts__title {
@@ -26,7 +31,7 @@ body {
 }
 .contacts__list {
   background: white;
-  padding: 10px;
+  padding: 0;
   margin: 0;
   list-style: none;
 }
@@ -42,7 +47,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 0 10px 0 20px;
 }
 .contacts__text_area {
   display: flex;
@@ -56,13 +61,81 @@ body {
   width: 8px;
   height: 8px;
   bottom: 6px;
-  left: -25px;
+  left: -80px;
 }
 .contacts__message {
   color: gray;
 }
 .contacts__date {
   font-size: 16px;
+}
+
+.chats {
+  background: rgb(245, 245, 245);
+}
+.chats__messages_area {
+  background: rgb(255, 255, 255);
+}
+.chats__user_logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 10px 0 20px;
+}
+.chats__header {
+  height: 50px;
+  background: rgb(245, 245, 245);
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+.chats__messages_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.chats__message {
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 20px;
+  padding: 20px 20px;
+  margin-bottom: 5px;
+  display: flex;
+}
+.chats__message_sent {
+  background: lightgray;
+  align-self: flex-end;
+}
+.chats__message_received {
+  background: rgb(46, 50, 65);
+  color: white;
+  align-self: flex-start;
+}
+.chats__message_item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.chats__message_item_received {
+  align-self: flex-start;
+}
+.chats__message_item_sent {
+  align-self: flex-end;
+}
+.chats__message_item_text_box {
+  display: flex;
+}
+.chats__message_item_received_date {
+  font-size: 12px;
+  color: gray;
+  font-style: italic;
+  margin: 0 10px;
+}
+.chats__message_item_sent_date {
+  font-size: 12px;
+  color: gray;
+  font-style: italic;
+  align-self: flex-end;
+  margin: 0 10px;
 }
 
 /*# sourceMappingURL=index.css.map */

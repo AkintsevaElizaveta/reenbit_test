@@ -1,8 +1,18 @@
-function Chat({usersId}){
-    console.log(`selected chat: ${usersId}`)
+
+import MessageItem from "./MessageItem";
+
+function Chat({messages, user}){
     return(
-        <div>
-            <span>{usersId}</span>
+        <div className="chats__messages_area">
+            <div className="chats__header">
+            </div>
+            <ul className="chats__messages_list">
+                {
+                    messages.map((message) => {
+                        return <MessageItem message={message} userPhoto={user.photo}></MessageItem>
+                    })
+                }
+            </ul>
         </div>
     )
 }
