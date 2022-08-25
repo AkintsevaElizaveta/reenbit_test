@@ -39,25 +39,29 @@ body {
     grid-template-columns: 1fr 4fr 1fr;
     align-items: center;
   }
-  &__photo{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 10px 0 20px;
-  }
-  &__text_area{
-    display: flex;
-    flex-direction: column;
+  &__photo_container{
     position: relative;
-    &:before{
+    &:after{
       position: absolute;
       display: block;
       content: url('images/icons/check.svg');
       width: 8px;
       height: 8px;
-      bottom: 6px;
-      left: -80px;
+      bottom: 35px;
+      right: 28px;
     }
+  }
+  &__photo{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 20px;
+  }
+  &__text_area{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
   }
   &__message{
     color: gray;
@@ -78,15 +82,19 @@ body {
     margin: 0 10px 0 20px;
   }
   &__header{
-    height: 50px;
+    height: 100px;
+    padding: 20px;
     background: rgb(245, 245, 245);
     border-bottom: 1px solid rgb(231, 231, 231);
+    display: flex;
+    align-items: center;
   }
   &__messages_list{
     list-style: none;
     display: flex;
+    margin: 0;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 20px;
   }
   &__message{
     font-size: 16px;

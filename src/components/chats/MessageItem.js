@@ -13,5 +13,3 @@ function MessageItem({message, userPhoto}){
  }
 
 export default MessageItem;
-
-{/*// className={message.isUsersMessage ? "chats__message chats__message_received" : "chats__message chats__message_sent"}*/}
