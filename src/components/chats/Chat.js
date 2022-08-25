@@ -1,11 +1,10 @@
-
+import ChatsHeader from "./ChatsHeader";
 import MessageItem from "./MessageItem";
 
 function Chat({messages, user}){
     return(
         <div className="chats__messages_area">
-            <div className="chats__header">
-            </div>
+            <ChatsHeader user={user} className="chats__header"/>
             <ul className="chats__messages_list">
                 {
                     messages.map((message) => {

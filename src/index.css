@@ -43,25 +43,28 @@ body {
   grid-template-columns: 1fr 4fr 1fr;
   align-items: center;
 }
-.contacts__photo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin: 0 10px 0 20px;
-}
-.contacts__text_area {
-  display: flex;
-  flex-direction: column;
+.contacts__photo_container {
   position: relative;
 }
-.contacts__text_area:before {
+.contacts__photo_container:after {
   position: absolute;
   display: block;
   content: url("images/icons/check.svg");
   width: 8px;
   height: 8px;
-  bottom: 6px;
-  left: -80px;
+  bottom: 35px;
+  right: 28px;
+}
+.contacts__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px;
+}
+.contacts__text_area {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 .contacts__message {
   color: gray;
@@ -83,15 +86,19 @@ body {
   margin: 0 10px 0 20px;
 }
 .chats__header {
-  height: 50px;
+  height: 100px;
+  padding: 20px;
   background: rgb(245, 245, 245);
   border-bottom: 1px solid rgb(231, 231, 231);
+  display: flex;
+  align-items: center;
 }
 .chats__messages_list {
   list-style: none;
   display: flex;
+  margin: 0;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 20px;
 }
 .chats__message {
   font-size: 16px;
