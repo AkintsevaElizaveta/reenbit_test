@@ -5,6 +5,7 @@ import ContactList from "./components/contacts/ContactList";
 import Chat from "./components/chats/Chat";
 import ChatsApi from "./api/chats/ChatsApi";
 import ContactHeader from "./components/contacts/ContactHeader";
+import MessageInput from "./components/chats/MessageInput";
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
                 ChatsApi.getMessages(items[0].id)
                     .then(messages => setMessages(messages))
             })
-            // .then(() => selectChat(contacts[0].id))
 
     }, [])
 
@@ -41,6 +41,14 @@ function App() {
             });
     }
 
+    function onSendMessage(text){
+        if(text !== ""){
+            ChatsApi.sendMessage(text, selectedUser.id)
+                .then(() => ChatsApi.getMessages(selectedUser.id)
+                    .then(messages => setMessages(messages)));
+        }
+    }
+
     return (
         <Context.Provider>
             <div className="wrapper">
@@ -50,11 +58,9 @@ function App() {
                     <ContactList contacts={contacts} onSelect={selectChat}></ContactList>
                 </div>
                 <div className="chats">
-                    <Chat messages={messages} user={selectedUser}></Chat>
+                    <Chat messages={messages} user={selectedUser} onSendMessage={onSendMessage}></Chat>
                 </div>
-                {/*<div className="chats__send_block"></div>*/}
             </div>
-
         </Context.Provider>
     );
 }

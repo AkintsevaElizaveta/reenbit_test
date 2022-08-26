@@ -1,7 +1,8 @@
 import ChatsHeader from "./ChatsHeader";
 import MessageItem from "./MessageItem";
+import MessageInput from "./MessageInput";
 
-function Chat({messages, user}){
+function Chat({messages, user, onSendMessage}){
     return(
         <div className="chats__messages_area">
             <ChatsHeader user={user} className="chats__header"/>
@@ -12,7 +13,7 @@ function Chat({messages, user}){
                     })
                 }
             </ul>
-            <div className="chats__send_block"></div>
+            <MessageInput onSendMessage={onSendMessage}/>
         </div>
     )
 }
