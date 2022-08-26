@@ -52,6 +52,7 @@ function App() {
                 <div className="chats">
                     <Chat messages={messages} user={selectedUser}></Chat>
                 </div>
+                {/*<div className="chats__send_block"></div>*/}
             </div>
 
         </Context.Provider>

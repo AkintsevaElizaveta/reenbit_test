@@ -12,6 +12,7 @@ function Chat({messages, user}){
                     })
                 }
             </ul>
+            <div className="chats__send_block"></div>
         </div>
     )
 }
