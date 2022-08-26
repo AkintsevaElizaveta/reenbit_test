@@ -4,17 +4,23 @@ import ContactApi from "./api/contacts/ContactApi";
 import ContactList from "./components/contacts/ContactList";
 import Chat from "./components/chats/Chat";
 import ChatsApi from "./api/chats/ChatsApi";
-import chat from "./components/chats/Chat";
+import ContactHeader from "./components/contacts/ContactHeader";
 
 function App() {
 
     const [contacts, setContacts] = React.useState([]);
     const [messages, setMessages] = React.useState([]);
-    const [selectedUser, setSelectedUser] = React.useState(null);
+    const [selectedUser, setSelectedUser] = React.useState([]);
 
     useEffect(() => {
         ContactApi.getContacts()
-            .then(items => setContacts(items));
+            .then(items => {
+                setContacts(items)
+                setSelectedUser(items[0])
+                ChatsApi.getMessages(items[0].id)
+                    .then(messages => setMessages(messages))
+            })
+            // .then(() => selectChat(contacts[0].id))
 
     }, [])
 
@@ -26,13 +32,20 @@ function App() {
             .then(messages => setMessages(messages))
     }
 
+    function onSearch(searchText){
+        searchText = searchText.toLowerCase()
+        ContactApi.getContacts()
+            .then(contacts => contacts.filter(res => res.firstName.toLowerCase().includes(searchText) || res.lastName.toLowerCase().includes(searchText)))
+            .then(items => {
+                setContacts(items)
+            });
+    }
+
     return (
         <Context.Provider>
             <div className="wrapper">
                 <div className="contacts">
-                    <div className="contacts__search_bar">
-                        <input className="contacts__search_field"/>
-                    </div>
+                    <ContactHeader onSearch={onSearch}/>
                     <h3 className="contacts__title">Chats</h3>
                     <ContactList contacts={contacts} onSelect={selectChat}></ContactList>
                 </div>

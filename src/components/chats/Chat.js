@@ -8,7 +8,7 @@ function Chat({messages, user}){
             <ul className="chats__messages_list">
                 {
                     messages.map((message) => {
-                        return <MessageItem message={message} userPhoto={user.photo}></MessageItem>
+                        return <MessageItem message={message} userPhoto={user.photo} isUserMessage={message.toUser === user.id}></MessageItem>
                     })
                 }
             </ul>

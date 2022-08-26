@@ -1,8 +1,14 @@
 class ContactApi{
-    static ROOT_URI = 'https://62e3d1843c89b95396d11a75.mockapi.io/contacts'
+    static ROOT_URI = 'https://chatapp20220826094633.azurewebsites.net/Users'
 
     static getContacts() {
-        return fetch(this.ROOT_URI).then(res => {
+        return fetch(this.ROOT_URI,{
+            headers: {
+                'Access-Control-Allow-Headers': '*',
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then(res => {
             if (res.ok) {
                 return res.json();
             }

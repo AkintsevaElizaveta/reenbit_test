@@ -4,7 +4,7 @@ function ChatsHeader({user}){
             <div className="contacts__photo_container">
                 <img src={`${user.photo}`} className="contacts__photo"/>
             </div>
-            <p>{`${user.name} ${user.lastName}`}</p>
+            <p>{`${user.firstName} ${user.lastName}`}</p>
         </div>
     )
 }

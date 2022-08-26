@@ -25,9 +25,28 @@ body {
 }
 .contacts__search_bar {
   background: rgb(245, 245, 245);
-  height: 100px;
+  height: 200px;
   padding: 10px;
   border-bottom: 1px solid rgb(231, 231, 231);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contacts__search_field {
+  width: 100%;
+  padding: 4px 10px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid rgb(231, 231, 231);
+  display: flex;
+  align-items: center;
+}
+.contacts__search_input {
+  border: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+  outline-style: none;
 }
 .contacts__list {
   background: white;
@@ -68,6 +87,20 @@ body {
 }
 .contacts__message {
   color: gray;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 3.6em;
+}
+.contacts__message:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255) 50%);
 }
 .contacts__date {
   font-size: 16px;
@@ -131,18 +164,17 @@ body {
 .chats__message_item_text_box {
   display: flex;
 }
-.chats__message_item_received_date {
+.chats__message_item_date {
   font-size: 12px;
   color: gray;
   font-style: italic;
-  margin: 0 10px;
 }
-.chats__message_item_sent_date {
-  font-size: 12px;
-  color: gray;
-  font-style: italic;
+.chats__message_item_date_sent {
   align-self: flex-end;
   margin: 0 10px;
+}
+.chats__message_item_date_received {
+  margin: 0 0 0 120px;
 }
 
 /*# sourceMappingURL=index.css.map */
