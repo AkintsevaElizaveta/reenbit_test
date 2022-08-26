@@ -18,7 +18,7 @@ body {
 
 .contacts {
   width: 40%;
-  border-right: 2px solid gray;
+  border-right: 1px solid gray;
   background: white;
   position: relative;
 }
@@ -32,7 +32,7 @@ body {
   width: 40%;
   padding: 10px;
   border-bottom: 1px solid gray;
-  border-right: 2px solid gray;
+  border-right: 1px solid gray;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -53,6 +53,11 @@ body {
   padding: 5px;
   width: 100%;
   outline-style: none;
+}
+.contacts__search_button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .contacts__list {
   background: white;
@@ -128,7 +133,8 @@ body {
 .chats__send_block {
   background: rgb(231, 231, 231);
   border-top: 1px solid gray;
-  height: 100px;
+  padding: 30px;
+  height: 140px;
   width: 60%;
   position: fixed;
   bottom: 0;
@@ -154,7 +160,7 @@ body {
   display: flex;
   margin: 0;
   flex-direction: column;
-  padding: 120px 20px 100px;
+  padding: 120px 20px 110px;
 }
 .chats__message {
   font-size: 16px;
@@ -198,6 +204,25 @@ body {
 }
 .chats__message_item_date_received {
   margin: 0 0 0 120px;
+}
+.chats__send_input {
+  width: 100%;
+  display: flex;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 10px;
+}
+.chats__send_input_field {
+  border: none;
+  width: 100%;
+  outline: none;
+  font: 16px/24px "Open Sans", sans-serif;
+}
+.chats__send_button {
+  background: none;
+  cursor: pointer;
+  border: none;
 }
 
 /*# sourceMappingURL=index.css.map */
