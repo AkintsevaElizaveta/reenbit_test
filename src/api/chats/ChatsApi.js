@@ -1,8 +1,8 @@
 class ChatsApi{
-    static ROOT_URI = 'https://62e3d1843c89b95396d11a75.mockapi.io/messages/'
+    static ROOT_URI = 'https://chatapp20220826094633.azurewebsites.net/Messages'
 
     static getMessages(userId) {
-        return fetch(this.ROOT_URI).then(res => {
+        return fetch(`${this.ROOT_URI}/${userId}`).then(res => {
             if (res.ok) {
                 return res.json();
             }
