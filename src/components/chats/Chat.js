@@ -3,6 +3,7 @@ import MessageItem from "./MessageItem";
 import MessageInput from "./MessageInput";
 
 function Chat({messages, user, onSendMessage}){
+
     return(
         <div className="chats__messages_area">
             <ChatsHeader user={user} className="chats__header"/>
