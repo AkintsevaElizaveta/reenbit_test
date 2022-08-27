@@ -1,5 +1,7 @@
+import ChuckNorris from "./ChuckNorris";
+
 class ChatsApi{
-    static ROOT_URI = 'https://chatapp20220826094633.azurewebsites.net/Messages/'
+    static ROOT_URI = 'https://chatapp20220826094633.azurewebsites.net/Messages'
 
     static getMessages(userId) {
         return fetch(`${this.ROOT_URI}/${userId}`).then(res => {
@@ -11,15 +13,10 @@ class ChatsApi{
         })
     }
 
-    static sendMessage(message, id){
-        let obj = {
-            fromUser: 0,
-            toUser: id,
-            messageText: message,
-        }
+    static sendMessage(message){
             return fetch(this.ROOT_URI, {
                 method: 'POST',
-                body: JSON.stringify(obj),
+                body: JSON.stringify(message),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },

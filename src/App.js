@@ -5,17 +5,22 @@ import ContactList from "./components/contacts/ContactList";
 import Chat from "./components/chats/Chat";
 import ChatsApi from "./api/chats/ChatsApi";
 import ContactHeader from "./components/contacts/ContactHeader";
+import DateTimeHelper from "./utils/DateTimeHelper";
+import ChuckNorris from "./api/chats/ChuckNorris";
 import MessageInput from "./components/chats/MessageInput";
+import NewMessageNotification from "./components/notifications/NewMessageNotification";
 
 function App() {
 
     const [contacts, setContacts] = React.useState([]);
     const [messages, setMessages] = React.useState([]);
     const [selectedUser, setSelectedUser] = React.useState([]);
+    const [isNotificationShown, setIsNotificationShown] = React.useState(false);
 
     useEffect(() => {
         ContactApi.getContacts()
             .then(items => {
+                items.sort((a, b) => DateTimeHelper.fromJSON(a.lastMessageDate) < DateTimeHelper.fromJSON(b.lastMessageDate) ? 1 : -1)
                 setContacts(items)
                 setSelectedUser(items[0])
                 ChatsApi.getMessages(items[0].id)
@@ -43,10 +48,45 @@ function App() {
 
     function onSendMessage(text){
         if(text !== ""){
-            ChatsApi.sendMessage(text, selectedUser.id)
-                .then(() => ChatsApi.getMessages(selectedUser.id)
-                    .then(messages => setMessages(messages)));
+            const message = {
+                fromUser: 0,
+                toUser: selectedUser.id,
+                messageText: text,
+            };
+
+            sendMessageAndUpdate(message)
+                .then(() => setTimeout(() => addResponse(), 10000))
         }
+    }
+
+    function addResponse() {
+        ChuckNorris.getMessages()
+            .then(response => {
+                const message = {
+                    fromUser: selectedUser.id,
+                    toUser: 0,
+                    messageText: response.value,
+                };
+
+                sendMessageAndUpdate(message)
+                    .then(() => setIsNotificationShown(true))
+                    .then(() => setTimeout(closeNotification, 5000));
+            })
+    }
+
+    function closeNotification() {
+        setIsNotificationShown(false)
+    }
+
+    function sendMessageAndUpdate(message) {
+        return ChatsApi.sendMessage(message)
+            .then(() => ChatsApi.getMessages(selectedUser.id)
+                .then(messages => setMessages(messages)))
+            .then(() => ContactApi.getContacts()
+                .then(contacts => {
+                    contacts.sort((a, b) => DateTimeHelper.fromJSON(a.lastMessageDate) < DateTimeHelper.fromJSON(b.lastMessageDate) ? 1 : -1)
+                    setContacts(contacts)
+                }))
     }
 
     return (
@@ -60,6 +100,7 @@ function App() {
                 <div className="chats">
                     <Chat messages={messages} user={selectedUser} onSendMessage={onSendMessage}></Chat>
                 </div>
+                {isNotificationShown && <NewMessageNotification user={selectedUser} onClose={closeNotification}/>}
             </div>
         </Context.Provider>
     );
