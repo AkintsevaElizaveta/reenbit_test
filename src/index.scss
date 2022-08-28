@@ -1,6 +1,6 @@
 $light_background: rgb(255, 255, 255);
-$dark_background: rgb(231, 231, 231);
-$borders: 1px solid gray;
+$dark_background: #f5f5f5;
+$borders: 1px solid #ececec;
 $light_font: rgb(128, 128, 128);
 $font_family: 'Open Sans', sans-serif;
 
@@ -19,10 +19,19 @@ body {
   justify-content: center;
 }
 .contacts{
-  width: 40%;
+  width: 25%;
   border-right: $borders;
   background: $light_background;
   position: relative;
+  @media screen and (max-width: 1919px){
+    width: 30%;
+  }
+  @media screen and (max-width: 1439px){
+    width: 40%;
+  }
+  @media screen and (max-width: 1023px){
+    width: 45%;
+  }
   &__title{
     color: rgb(113, 137, 208);
     margin: 225px 10px 25px;
@@ -30,7 +39,7 @@ body {
   &__search_bar{
     background: $dark_background;
     height: 200px;
-    width: 40%;
+    width: 25%;
     padding: 10px;
     border-bottom: $borders;
     border-right: $borders;
@@ -38,6 +47,15 @@ body {
     flex-direction: column;
     position: fixed;
     z-index: 2;
+    @media screen and (max-width: 1919px){
+      width: 30%;
+    }
+    @media screen and (max-width: 1439px){
+      width: 40%;
+    }
+    @media screen and (max-width: 1023px){
+      width: 45%;
+    }
   }
   &__search_field{
     width: 100%;
@@ -92,6 +110,12 @@ body {
       right: 0;
     }
   }
+  &__photo_container_isNotOnline {
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    position: static;
+  }
   &__photo{
     width: 60px;
     height: 60px;
@@ -102,6 +126,9 @@ body {
     flex-direction: column;
     position: relative;
     justify-content: center;
+    @media screen and (max-width: 1439px){
+      font-size: 18px;
+    }
   }
   &__message{
     color: $light_font;
@@ -117,6 +144,9 @@ body {
     -webkit-box-orient: vertical;
     line-clamp: 2;
     box-orient: vertical;
+    @media screen and (max-width: 1439px){
+      font-size: 16px;
+    }
     &:after {
       content: "";
       text-align: right;
@@ -131,13 +161,25 @@ body {
   }
   &__date{
     font-size: 16px;
+    @media screen and (max-width: 1439px){
+      font-size: 14px;
+    }
   }
 }
 .chats{
   background: $light_background;
-  width: 60%;
+  width: 75%;
   overflow: scroll;
   scroll-behavior: smooth;
+  @media screen and (max-width: 1919px){
+    width: 70%;
+  }
+  @media screen and (max-width: 1439px){
+    width: 60%;
+  }
+  @media screen and (max-width: 1023px){
+    width: 55%;
+  }
   &__messages_area{
     height: 100vh;
     position: relative;
@@ -147,13 +189,22 @@ body {
     border-top: $borders;
     padding: 30px;
     height: 140px;
-    width: 60%;
+    width: 75%;
     position:fixed;
     bottom: 0;
+    @media screen and (max-width: 1919px){
+      width: 70%;
+    }
+    @media screen and (max-width: 1439px){
+      width: 60%;
+    }
+    @media screen and (max-width: 1023px){
+      width: 55%;
+    }
   }
   &__user_logo{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
   }
   &__header{
@@ -204,10 +255,13 @@ body {
       flex-direction: column;
     }
     &_date{
-      font-size: 12px;
+      font-size: 14px;
       color: $light_font;
       font-style: italic;
       margin: 5px 20px;
+      @media screen and (max-width: 1439px){
+        font-size: 12px;
+      }
       &_sent{
         align-self: flex-end;
       }

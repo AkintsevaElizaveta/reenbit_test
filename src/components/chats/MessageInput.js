@@ -2,6 +2,21 @@ function MessageInput({onSendMessage}){
     function onSendBtnClick(e){
         const textArea = e.target.closest('.chats__send_input').children[0];
         const text = textArea.value;
+
+        onSendMessage(text);
+        textArea.value = '';
+    }
+
+    function onKeyPressed(e){
+        if(e.key !== "Enter"){
+            return
+        }
+
+        e.preventDefault();
+
+        const textArea = e.target;
+        const text = textArea.value;
+
         onSendMessage(text);
         textArea.value = '';
     }
@@ -9,7 +24,7 @@ function MessageInput({onSendMessage}){
     return(
         <div className="chats__send_block">
             <div className="chats__send_input">
-                <textarea className="chats__send_input_field" placeholder="Type your message"/>
+                <textarea className="chats__send_input_field" placeholder="Type your message" onKeyPress={(e) => onKeyPressed(e)}/>
                 <button className="chats__send_button" onClick={(e) => onSendBtnClick(e)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                              className="bi bi-send" viewBox="0 0 16 16">
