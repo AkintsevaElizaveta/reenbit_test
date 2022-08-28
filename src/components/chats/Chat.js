@@ -7,7 +7,7 @@ function Chat({messages, user, onSendMessage}){
     return(
         <div className="chats__messages_area">
             <ChatsHeader user={user} className="chats__header"/>
-            <ul className="chats__messages_list">
+            <ul className="chats__messages_list" id="scroll">
                 {
                     messages.map((message) => {
                         return <MessageItem message={message} userPhoto={user.photo} isUserMessage={message.toUser === user.id}></MessageItem>
