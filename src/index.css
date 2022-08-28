@@ -16,33 +16,63 @@ body {
 }
 
 .contacts {
-  width: 40%;
-  border-right: 1px solid gray;
+  width: 25%;
+  border-right: 1px solid #ececec;
   background: rgb(255, 255, 255);
   position: relative;
+}
+@media screen and (max-width: 1919px) {
+  .contacts {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .contacts {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .contacts {
+    width: 45%;
+  }
 }
 .contacts__title {
   color: rgb(113, 137, 208);
   margin: 225px 10px 25px;
 }
 .contacts__search_bar {
-  background: rgb(231, 231, 231);
+  background: #f5f5f5;
   height: 200px;
-  width: 40%;
+  width: 25%;
   padding: 10px;
-  border-bottom: 1px solid gray;
-  border-right: 1px solid gray;
+  border-bottom: 1px solid #ececec;
+  border-right: 1px solid #ececec;
   display: flex;
   flex-direction: column;
   position: fixed;
   z-index: 2;
+}
+@media screen and (max-width: 1919px) {
+  .contacts__search_bar {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .contacts__search_bar {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .contacts__search_bar {
+    width: 45%;
+  }
 }
 .contacts__search_field {
   width: 100%;
   padding: 4px 10px;
   background: rgb(255, 255, 255);
   border-radius: 20px;
-  border: 1px solid gray;
+  border: 1px solid #ececec;
   display: flex;
   align-items: center;
 }
@@ -70,7 +100,7 @@ body {
 .contacts__item {
   width: 100%;
   height: 100px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #ececec;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   align-items: center;
@@ -90,6 +120,12 @@ body {
   bottom: 20px;
   right: 0;
 }
+.contacts__photo_container_isNotOnline {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  position: static;
+}
 .contacts__photo {
   width: 60px;
   height: 60px;
@@ -100,6 +136,11 @@ body {
   flex-direction: column;
   position: relative;
   justify-content: center;
+}
+@media screen and (max-width: 1439px) {
+  .contacts__text_area {
+    font-size: 18px;
+  }
 }
 .contacts__message {
   color: rgb(128, 128, 128);
@@ -116,6 +157,11 @@ body {
   line-clamp: 2;
   box-orient: vertical;
 }
+@media screen and (max-width: 1439px) {
+  .contacts__message {
+    font-size: 16px;
+  }
+}
 .contacts__message:after {
   content: "";
   text-align: right;
@@ -129,37 +175,72 @@ body {
 .contacts__date {
   font-size: 16px;
 }
+@media screen and (max-width: 1439px) {
+  .contacts__date {
+    font-size: 14px;
+  }
+}
 
 .chats {
   background: rgb(255, 255, 255);
-  width: 60%;
+  width: 75%;
   overflow: scroll;
   scroll-behavior: smooth;
+}
+@media screen and (max-width: 1919px) {
+  .chats {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .chats {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .chats {
+    width: 55%;
+  }
 }
 .chats__messages_area {
   height: 100vh;
   position: relative;
 }
 .chats__send_block {
-  background: rgb(231, 231, 231);
-  border-top: 1px solid gray;
+  background: #f5f5f5;
+  border-top: 1px solid #ececec;
   padding: 30px;
   height: 140px;
-  width: 60%;
+  width: 75%;
   position: fixed;
   bottom: 0;
 }
+@media screen and (max-width: 1919px) {
+  .chats__send_block {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .chats__send_block {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .chats__send_block {
+    width: 55%;
+  }
+}
 .chats__user_logo {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 .chats__header {
   height: 100px;
   width: 100%;
   padding: 20px;
-  background: rgb(231, 231, 231);
-  border-bottom: 1px solid gray;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ececec;
   display: flex;
   align-items: center;
   position: fixed;
@@ -179,7 +260,7 @@ body {
   white-space: pre-line;
 }
 .chats__message_sent {
-  background: rgb(231, 231, 231);
+  background: #f5f5f5;
   align-self: flex-end;
 }
 .chats__message_received {
@@ -203,10 +284,15 @@ body {
   flex-direction: column;
 }
 .chats__message_item_date {
-  font-size: 12px;
+  font-size: 14px;
   color: rgb(128, 128, 128);
   font-style: italic;
   margin: 5px 20px;
+}
+@media screen and (max-width: 1439px) {
+  .chats__message_item_date {
+    font-size: 12px;
+  }
 }
 .chats__message_item_date_sent {
   align-self: flex-end;
@@ -215,7 +301,7 @@ body {
   width: 100%;
   display: flex;
   background: rgb(255, 255, 255);
-  border: 1px solid gray;
+  border: 1px solid #ececec;
   border-radius: 20px;
   padding: 10px 10px;
 }
@@ -244,8 +330,8 @@ body {
   padding: 20px;
   width: 400px;
   border-radius: 20px;
-  background: rgb(231, 231, 231);
-  border: 1px solid gray;
+  background: #f5f5f5;
+  border: 1px solid #ececec;
   height: 200px;
   display: flex;
   flex-direction: column;

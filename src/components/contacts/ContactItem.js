@@ -1,10 +1,10 @@
 import DateTimeHelper from "../../utils/DateTimeHelper";
 
-function ContactItem({contact, onSelect}){
+function ContactItem({contact, onSelect, isUserOnline}){
 
     return (
         <li className="contacts__item" onClick={() => onSelect(contact.id)}>
-            <div className={"contacts__photo_container " }>
+            <div className={isUserOnline ? "contacts__photo_container" : "contacts__photo_container_isNotOnline" }>
                 <img src={`${contact.photo}`} className="contacts__photo"/>
             </div>
             <span className="contacts__text_area">

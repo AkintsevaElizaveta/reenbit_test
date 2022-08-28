@@ -7,7 +7,7 @@ function ContactList({contacts, onSelect}){
         <ul className="contacts__list">
             {
                 contacts.map((contact, index) => {
-                    return <ContactItem contact={contact} onSelect={onSelect}></ContactItem>
+                    return <ContactItem contact={contact} onSelect={onSelect} isUserOnline={contact.isOnline}></ContactItem>
                 })
             }
         </ul>
