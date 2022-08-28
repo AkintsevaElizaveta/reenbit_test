@@ -8,7 +8,7 @@ function MessageItem({message, userPhoto, isUserMessage}){
                 <div className={isUserMessage ? "chats__message chats__message_sent" : "chats__message chats__message_received"}>{message.messageText}</div>
                 <span className={isUserMessage ? "chats__message_item_date chats__message_item_date_sent" : "chats__message_item_date chats__message_item_date_received"}>{DateTimeHelper.fromJSON(message.date)}</span>
             </div>
-            </li>
+        </li>
 
 
     )

@@ -7,7 +7,6 @@ import ChatsApi from "./api/chats/ChatsApi";
 import ContactHeader from "./components/contacts/ContactHeader";
 import DateTimeHelper from "./utils/DateTimeHelper";
 import ChuckNorris from "./api/chats/ChuckNorris";
-import MessageInput from "./components/chats/MessageInput";
 import NewMessageNotification from "./components/notifications/NewMessageNotification";
 
 function App() {
@@ -15,7 +14,8 @@ function App() {
     const [contacts, setContacts] = React.useState([]);
     const [messages, setMessages] = React.useState([]);
     const [selectedUser, setSelectedUser] = React.useState([]);
-    const [isNotificationShown, setIsNotificationShown] = React.useState(false);
+    const [notificationState, setNotificationState] = React.useState(new NotificationState(false, null));
+
 
     useEffect(() => {
         ContactApi.getContacts()
@@ -23,6 +23,7 @@ function App() {
                 items.sort((a, b) => DateTimeHelper.fromJSON(a.lastMessageDate) < DateTimeHelper.fromJSON(b.lastMessageDate) ? 1 : -1)
                 setContacts(items)
                 setSelectedUser(items[0])
+                setNotificationState(new NotificationState(false, items[0]));
                 ChatsApi.getMessages(items[0].id)
                     .then(messages => setMessages(messages))
             })
@@ -35,6 +36,7 @@ function App() {
 
         ChatsApi.getMessages(usersId)
             .then(messages => setMessages(messages))
+            .then(() => bottom())
     }
 
     function onSearch(searchText){
@@ -54,8 +56,12 @@ function App() {
                 messageText: text,
             };
 
+            setNotificationState(new NotificationState(false, selectedUser));
+
             sendMessageAndUpdate(message)
-                .then(() => setTimeout(() => addResponse(), 10000))
+                .then(() => {
+                    setTimeout(() => addResponse(), 10000)
+                })
         }
     }
 
@@ -69,13 +75,20 @@ function App() {
                 };
 
                 sendMessageAndUpdate(message)
-                    .then(() => setIsNotificationShown(true))
+                    .then(() => showNotification())
                     .then(() => setTimeout(closeNotification, 5000));
             })
     }
 
+    function showNotification() {
+        ContactApi.getContact(selectedUser.id)
+            .then(user =>{
+                setNotificationState(new NotificationState(true, user));
+            })
+    }
+
     function closeNotification() {
-        setIsNotificationShown(false)
+        setNotificationState(new NotificationState(false, notificationState.userToNotify))
     }
 
     function sendMessageAndUpdate(message) {
@@ -100,10 +113,21 @@ function App() {
                 <div className="chats">
                     <Chat messages={messages} user={selectedUser} onSendMessage={onSendMessage}></Chat>
                 </div>
-                {isNotificationShown && <NewMessageNotification user={selectedUser} onClose={closeNotification}/>}
+                {notificationState.isNotificationShown && <NewMessageNotification user={notificationState.userToNotify} onClose={closeNotification}/>}
             </div>
         </Context.Provider>
     );
+}
+
+function bottom() {
+    document.querySelector( '#scroll' ).scrollBy(0, window.innerHeight);
+}
+
+class NotificationState {
+    constructor(isNotificationShown, userToNotify) {
+        this.isNotificationShown = isNotificationShown;
+        this.userToNotify = userToNotify;
+    }
 }
 
 export default App;

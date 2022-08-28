@@ -13,13 +13,12 @@ body {
   position: relative;
   overflow: hidden;
   justify-content: center;
-  background: rgb(245, 245, 245);
 }
 
 .contacts {
   width: 40%;
   border-right: 1px solid gray;
-  background: white;
+  background: rgb(255, 255, 255);
   position: relative;
 }
 .contacts__title {
@@ -41,7 +40,7 @@ body {
 .contacts__search_field {
   width: 100%;
   padding: 4px 10px;
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: 20px;
   border: 1px solid gray;
   display: flex;
@@ -60,7 +59,7 @@ body {
   cursor: pointer;
 }
 .contacts__list {
-  background: white;
+  background: rgb(255, 255, 255);
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -103,7 +102,7 @@ body {
   justify-content: center;
 }
 .contacts__message {
-  color: gray;
+  color: rgb(128, 128, 128);
   margin-right: 10px;
   overflow: hidden;
   position: relative;
@@ -180,7 +179,7 @@ body {
   white-space: pre-line;
 }
 .chats__message_sent {
-  background: lightgray;
+  background: rgb(231, 231, 231);
   align-self: flex-end;
 }
 .chats__message_received {
@@ -196,9 +195,6 @@ body {
 .chats__message_item:last-child {
   margin-bottom: 30px;
 }
-.chats__message_item_received {
-  align-self: flex-start;
-}
 .chats__message_item_sent {
   align-self: flex-end;
 }
@@ -208,7 +204,7 @@ body {
 }
 .chats__message_item_date {
   font-size: 12px;
-  color: gray;
+  color: rgb(128, 128, 128);
   font-style: italic;
   margin: 5px 20px;
 }
@@ -218,7 +214,7 @@ body {
 .chats__send_input {
   width: 100%;
   display: flex;
-  background: white;
+  background: rgb(255, 255, 255);
   border: 1px solid gray;
   border-radius: 20px;
   padding: 10px 10px;
@@ -261,7 +257,7 @@ body {
 }
 
 .contacts__message_notification:after {
-  background: linear-gradient(to right, rgba(231, 231, 231, 0), rgb(231, 231, 231) 50%);
+  background: none;
 }
 
 .contacts__photo_notification {
